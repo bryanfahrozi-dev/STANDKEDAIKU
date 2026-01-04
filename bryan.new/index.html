@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KEDAIKU | Makanan & Minuman</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">KEDAI<span>KU</span></div>
+            <div class="cart-icon" onclick="toggleCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Rasa Bintang Lima, Harga Kaki Lima</h1>
+        <p class="hero-sub">Nikmati menu pilihan terbaik kami setiap hari — cepat, enak, dan ramah di kantong.</p>
+        <a class="cta-btn" href="#menu">Lihat Menu</a>
+    </section>
+
+    <main id="menu">
+        <h2 class="section-title">SEMUA MENU FAVORIT</h2>
+        <div class="menu-grid">
+    <div class="menu-card">
+        <div class="badge-hot">BEST NO SELLER</div>
+        <img src="burger.jpg" alt="Menu">
+        <div class="menu-info">
+            <h3>Burger Mini</h3>
+            <div class="rating">⭐⭐⭐⭐⭐ <span>(50+)</span></div>
+            <p>Burger uenak dengan banyak pilihan saos.</p>
+            <span class="price">Rp 5.000</span>
+            <button class="btn-add" onclick="addToCart('Burger Mini', 5000)">Tambah ke <i class="fas fa-cart-plus"></i></button>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="kentank 2.jpg" alt="Menu">
+        <div class="menu-info">
+            <h3>French Fries</h3>
+            <div class="rating">⭐⭐⭐⭐⭐ <span>(30+)</span></div>
+            <p>kentang goreng renyah dengan saus.</p>
+            <span class="price">Rp 5.000</span>
+            <button class="btn-add" onclick="addToCart('French Fries', 5000)">Tambah ke <i class="fas fa-cart-plus"></i></button>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="sosis.jpg" alt="Menu">
+        <div class="menu-info">
+            <h3>Sosis Bunga</h3>
+            <div class="rating">⭐⭐⭐⭐⭐ <span>(45+)</span></div>
+            <p>Sosis ayam asli dengan banyak pilihan saos.</p>
+            <span class="price">Rp 5.000</span>
+            <button class="btn-add" onclick="addToCart('Sosis Bunga', 5000)">Tambah ke <i class="fas fa-cart-plus"></i></button>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="es teh.jpg" alt="Menu">
+        <div class="menu-info">
+            <h3>Es tea</h3>
+            <div class="rating">⭐⭐⭐⭐⭐ <span>(100+)</span></div>
+            <p>Teh yang wangi dan enak, uk=m/b.</p>
+            <span class="price">Rp 3.000</span>
+            <button class="btn-add" onclick="addToCart('Es tea', 3000)">Tambah ke <i class="fas fa-cart-plus"></i></button>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <img src="es redvelvet.jpg" alt="Menu">
+        <div class="menu-info">
+            <h3>Red Velvet</h3>
+            <div class="rating">⭐⭐⭐⭐⭐ <span>(30+)</span></div>
+            <p> dengan tambahan susu full cream</p>
+            <span class="price">Rp 5.000</span>
+            <button class="btn-add" onclick="addToCart('Red Velvet', 5000)">Tambah ke <i class="fas fa-cart-plus"></i></button>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <div class="badge-hot" style="background: #a855f7;">NEW</div>
+        <img src="coklat.jpg" alt="Menu">
+        <div class="menu-info">
+            <h3>Cocolate </h3>
+            <div class="rating">⭐⭐⭐⭐⭐ <span>(20+)</span></div>
+            <p>Minuman cocolate yang creamy dijamin nagih.</p>
+            <span class="price">Rp 5.000</span>
+            <button class="btn-add" onclick="addToCart('Taro Glossy Milk', 15000)">Tambah ke <i class="fas fa-cart-plus"></i></button>
+        </div>
+    </div>
+</div>
+    </main>
+
+    <!-- Panel Keranjang -->
+    <div id="cart-panel" class="cart-panel" aria-hidden="true">
+        <div class="cart-header">
+            <h3>Keranjang Anda</h3>
+            <button class="close-cart" onclick="toggleCart()" aria-label="Tutup keranjang">×</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <p class="empty">Keranjang kosong</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">Total: <span id="cart-total">Rp 0</span></div>
+            <button id="wa-order" class="btn-wa" onclick="sendWhatsApp()"><i class="fab fa-whatsapp"></i> Pesan via WhatsApp</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
