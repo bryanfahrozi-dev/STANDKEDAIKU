@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    /* Palet Glossy Baru - Sunset Pink / Purple dengan aksen teal */
+    --main-purple: #ff7ab6; /* aksen utama - pink glossy */
+    --dark-purple: #6b21a8; /* warna gelap pelengkap */
+    --bg-dark: #07112b; /* latar gelap yang dalam untuk kontras */
+    --glossy-gradient: linear-gradient(135deg, #ffd6e8 0%, #ff7ab6 35%, #a855f7 70%, #4fd1c5 100%);
+    --shadow-purple: 0 0 28px rgba(255, 122, 182, 0.28);
+}
+
+body { 
+    background-color: var(--bg-dark); 
+    color: #f8fafc;
+}
+
+/* Header Glassmorphism */
+header {
+    background: rgba(10, 1, 24, 0.8);
+    backdrop-filter: blur(15px);
+    padding: 1rem 5%;
+    position: sticky; top: 0; 
+    border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+    z-index: 1000;
+}
+
+nav { display: flex; justify-content: space-between; align-items: center; }
+
+.logo { font-size: 1.8rem; font-weight: 800; color: #fff; text-shadow: var(--shadow-purple); }
+.logo span { color: var(--main-purple); }
+
+/* Keranjang Kuning (Tetap Kuning agar Kontras/Mencolok) */
+.cart-icon {
+    background: #ffcc00;
+    color: #000;
+    padding: 10px 20px; border-radius: 50px;
+    cursor: pointer; position: relative; font-weight: bold;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.6);
+    transition: 0.3s ease;
+}
+
+.cart-icon .fas { margin-right: 8px; }
+.cart-icon #cart-count {
+    background: #000; color: #ffcc00; font-weight: 800;
+    padding: 2px 8px; border-radius: 12px; margin-left: 8px;
+}
+
+.animate-pop { transform: scale(1.08); transition: transform 0.18s ease; }
+
+/* Panel Keranjang Kuning */
+.cart-panel {
+    position: fixed; right: 20px; bottom: 90px; width: 320px;
+    background: linear-gradient(180deg, #fff7cc, #fff1b8);
+    border-radius: 14px; box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+    border: 2px solid rgba(0,0,0,0.08);
+    overflow: hidden; transform-origin: bottom right;
+    z-index: 2000; opacity: 0; pointer-events: none; transform: translateY(10px) scale(0.98);
+    transition: 200ms ease;
+}
+.cart-panel[aria-hidden="false"], .cart-panel.open { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
+
+.cart-header { display:flex; justify-content:space-between; align-items:center; padding:12px 14px; border-bottom:1px solid rgba(0,0,0,0.06); }
+.cart-header h3 { margin:0; color:#111; font-size:1.05rem; }
+.close-cart { background:transparent; border:none; font-size:20px; cursor:pointer; }
+
+.cart-items { max-height:260px; overflow:auto; padding:10px 14px; }
+.cart-items .item { display:flex; justify-content:space-between; gap:8px; padding:8px 0; border-bottom:1px dashed rgba(0,0,0,0.03); }
+.cart-items .item .name { color:#111; font-weight:600; }
+.cart-items .item .price { color:#444; }
+.cart-items .empty { color:#666; text-align:center; padding:30px 0; }
+
+.cart-footer { display:flex; gap:10px; align-items:center; padding:12px 14px; border-top:1px solid rgba(0,0,0,0.05); }
+.cart-total { flex:1; color:#111; font-weight:800; }
+.btn-wa { background:#25D366; color:white; border:none; padding:10px 12px; border-radius:10px; cursor:pointer; font-weight:700; display:flex; gap:8px; align-items:center; }
+.btn-wa i { font-size:18px; }
+
+/* Responsive: sembunyikan panel di layar kecil, gunakan full width */
+@media (max-width:480px){
+    .cart-panel { right:10px; left:10px; width:auto; bottom:20px; }
+}
+
+/* Hero Section Ungu Glossy */
+.hero {
+    position: relative;
+    text-align: center;
+    padding: 110px 20px;
+    /* Layered background: soft radial highlights + glossy gradient overlay + subtle texture image */
+    background-color: var(--bg-dark);
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.03) 0%, transparent 18%),
+        radial-gradient(circle at 85% 80%, rgba(79,209,197,0.04) 0%, transparent 20%),
+        linear-gradient(rgba(10, 1, 24, 0.55), rgba(10, 1, 24, 0.55)),
+        url('https://images.unsplash.com/photo-1579546678181-9548433ec8a4?w=1600&q=60&auto=format&fit=crop');
+    background-size: cover, cover, cover, cover;
+    background-blend-mode: overlay, screen, multiply, normal;
+    border-bottom: 3px solid var(--main-purple);
+    overflow: hidden;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    background: var(--glossy-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 14px rgba(168, 85, 247, 0.45));
+    letter-spacing: 0.6px;
+}
+
+/* Animated glossy overlay (subtle) - does not change palette */
+.hero::before{
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(120deg, rgba(255,122,182,0.10) 0%, rgba(79,209,197,0.06) 40%, rgba(168,85,247,0.08) 70%);
+    background-size: 200% 200%;
+    mix-blend-mode: screen;
+    opacity: 0.95;
+    pointer-events: none;
+    z-index: 1;
+    animation: heroGradient 9s ease-in-out infinite;
+}
+
+/* Keep hero content above overlay */
+.hero > *{ position: relative; z-index: 2; }
+
+@keyframes heroGradient{
+    0%{ background-position: 0% 50%; }
+    50%{ background-position: 100% 50%; }
+    100%{ background-position: 0% 50%; }
+}
+
+/* Decorative SVG wave at bottom of hero (subtle, keeps colors untouched) */
+.hero::after{
+    content: "";
+    position: absolute; left:0; right:0; bottom:-2px; height:100px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'><path fill='%23ffffff' fill-opacity='0.06' d='M0,192L48,170.7C96,149,192,107,288,122.7C384,139,480,213,576,213.3C672,213,768,139,864,117.3C960,96,1056,128,1152,138.7C1248,149,1344,139,1392,133.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'></path></svg>");
+    background-repeat: no-repeat; background-position: center bottom; background-size: cover;
+    pointer-events: none;
+}
+
+/* Kartu Menu */
+.menu-card {
+    background: rgba(30, 10, 60, 0.4);
+    border-radius: 24px; overflow: hidden;
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.menu-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--main-purple);
+    box-shadow: 0 10px 40px rgba(168, 85, 247, 0.4);
+}
+
+.price {
+    color: #e9d5ff;
+    font-size: 1.3rem; font-weight: 700;
+    display: block; margin: 10px 0;
+}
+
+/* Tombol Tambah Glossy */
+.btn-add {
+    background: var(--glossy-gradient);
+    color: white; border: none; width: 100%;
+    padding: 14px; border-radius: 15px; cursor: pointer;
+    font-weight: 700; box-shadow: var(--shadow-purple);
+    position: relative; overflow: hidden;
+}
+
+.btn-add::after {
+    content: ""; position: absolute; top: -50%; left: -60%;
+    width: 20%; height: 200%; background: rgba(255,255,255,0.4);
+    transform: rotate(30deg); transition: 0.5s;
+}
+
+.btn-add:hover::after { left: 120%; }
+
+/* Modal Keranjang */
+.cart-content {
+    background: #1a0b2e;
+    border: 2px solid var(--main-purple);
+    box-shadow: 0 0 50px rgba(168, 85, 247, 0.5);
+    border-radius: 20px;
+}
+
+/* Footer */
+footer {
+    background: #05010d;
+    border-top: 1px solid var(--dark-purple);
+    padding: 40px 5%; text-align: center;
+}
+
+/* Grid menu dan aturan gambar agar foto tampil normal */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 40px 5%;
+}
+
+.menu-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.menu-info {
+    padding: 16px;
+}
+
+/* CTA Button in Hero */
+.cta-btn {
+    display:inline-block; margin-top:18px; background: linear-gradient(90deg,#ffb703,#ffcc00);
+    color:#2b2b2b; padding:12px 20px; border-radius:999px; font-weight:800; text-decoration:none;
+    box-shadow: 0 10px 30px rgba(255,187,51,0.18); transition: transform .18s ease, box-shadow .18s ease;
+}
+.cta-btn:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(255,187,51,0.22); }
+
+/* Badge */
+.badge-hot { position: absolute; top:12px; left:12px; background:#ff5a5f; color:#fff; padding:6px 10px; border-radius:12px; font-weight:700; font-size:0.8rem; box-shadow:0 6px 18px rgba(255,90,95,0.18); }
+
+/* Card uplift and subtle animation */
+.menu-card { position:relative; transform: translateY(0); opacity: 0; animation: cardIn .45s ease forwards; }
+.menu-card:nth-child(1){ animation-delay: 0.05s; }
+.menu-card:nth-child(2){ animation-delay: 0.10s; }
+.menu-card:nth-child(3){ animation-delay: 0.15s; }
+.menu-card:nth-child(4){ animation-delay: 0.20s; }
+.menu-card:nth-child(5){ animation-delay: 0.25s; }
+.menu-card:nth-child(6){ animation-delay: 0.30s; }
+@keyframes cardIn { from { transform: translateY(8px); opacity:0 } to { transform: translateY(0); opacity:1 } }
+
+/* Image hover scale */
+.menu-card img { transition: transform .45s ease; }
+.menu-card:hover img { transform: scale(1.06); }
+
+/* Section title */
+.section-title { text-align:center; color: #fff; margin-top: 30px; font-size:1.4rem; letter-spacing:1px; }
+
+/* Improve hero subtitle */
+.hero-sub { color: rgba(255,255,255,0.9); margin-top:12px; font-size:1.05rem; }
+
+/* Small layout tweaks */
+@media (max-width:720px){
+    .hero { padding: 60px 16px; }
+    .hero h1 { font-size:2rem; }
+}
